@@ -1,0 +1,37 @@
+name: 'Pendulum - APHYNITY+'
+parameters:
+  optimization:
+    learning_rate_fa: 0.0005
+    weight_decay_fa: .0
+    n_epochs: 50
+    n_iter: 5
+    lambda_0: 10.
+    tau_2: 5.
+    fa:
+      linear: False
+      hidden_n: 3
+      hidden_w: 50
+      act: ReLU
+      final_act:
+      regularization_scheme:
+    fp_param_converter_hidden_n: 3
+    fp_param_converter_hidden_w: 150
+    augmented: True
+    combined_augmentation: True
+    zp_priors:
+      omega_0:
+        min: .5
+        max: 3.5
+    model: "APHYNITY"
+    path_model: "code/data/DampedPendulum/runs/APHYNITY.yaml/11_25_2022_20_59_02/APHYNITY_best_valid_model.pt"
+  data_path: "code/data/DampedPendulum"
+  simulator:
+    name: 'DampedPendulum'
+    init_param:
+      omega_0: .5
+    true_param:
+      omega_0: 1.
+      alpha: .5
+    partial_model_param:
+      - omega_0
+  solver: 'APHYNITY'

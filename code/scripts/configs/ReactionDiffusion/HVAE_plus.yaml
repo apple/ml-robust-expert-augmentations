@@ -1,0 +1,34 @@
+name: 'Reaction Diffusion - HVAE+'
+parameters:
+  optimization_learning_rate_fa: 0.0005
+  optimization_weight_decay_fa: .00001
+  optimization_n_epochs: 1000
+  optimization_b_size: 100
+  optimization_gamma: 1.
+  optimization_alpha: .01
+  optimization_beta: .01
+  optimization_omicron: 0.
+  optimization_model: HybridVAEReactionDiffusion
+  data_path: "code/data/ReactionDiffusion"
+  optimization_zp_priors:
+    a:
+      mu: 0.0015
+      sigma: 0.0004
+      min: 0.001
+      max: 0.004
+    b:
+      mu: 0.005
+      sigma: 0.0012
+      min: 0.001
+      max: 0.01
+  simulator_name: 'ReactionDiffusion'
+  optimization_augmented: True
+  optimization_path_model: "code/data/models/HVAE/vae_amortized_HybridVAEReactionDiffusion_Reaction Diffusion['a', 'b']_HVAE_best_valid_model.pt"
+  simulator_init_param_a: -100000.
+  simulator_init_param_b: -100000.
+  simulator_true_param_a: -100000.
+  simulator_true_param_b: -100000.
+  simulator_true_param_k: -100000.
+  simulator_partial_model_param:
+    - a
+    - b

@@ -1,0 +1,48 @@
+name: 'Double Pendulum - APHYNITY'
+parameters:
+  data_path: "code/data/DoublePendulum"
+  optimization:
+    save_all_models: True
+    learning_rate_fa: 0.0005
+    weight_decay_fa: .0
+    n_epochs: 1000
+    n_iter: 1
+    lambda_0: 1.
+    tau_2: 5.
+    no_fa: False
+    no_fp: True
+    za_dim: 10
+    reduced_time_frame: True
+    fa_regularization_scheme:
+    augmented: False
+    cos_sin_encoding: True
+    no_APHYNITY: True
+    use_complete_signal: True
+    obtain_init_position: True
+    nb_observed_theta_0: 10
+    nb_observed_theta_1: 5
+    nb_observed: 10
+    model: 'APHYNITYDoublePendulum'
+    zp_priors:
+      \theta_0:
+        min: .5
+        max: 1.5
+      \theta_1:
+        min: .5
+        max: 1.5
+      \dot \theta_0:
+        min: .5
+        max: 1.5
+      \dot \theta_1:
+        min: .5
+        max: 1.5
+  simulator:
+    name: 'DoublePendulum'
+    init_param_omega_0: .5
+    true_param_omega_0: 1.
+    true_param_alpha: .5
+    partial_model_param:
+      - \theta_0
+      - \theta_1
+      - \dot \theta_0
+      - \dot \theta_1

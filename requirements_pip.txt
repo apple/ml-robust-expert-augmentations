@@ -1,0 +1,3 @@
+torchdiffeq==0.2.3
+torchdyn==1.0.3
+torchvision==0.14.0

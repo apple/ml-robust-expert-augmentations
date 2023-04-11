@@ -1,0 +1,48 @@
+name: 'RLC - HVAE+'
+parameters:
+  data_path: "code/data/RLC"
+  optimization:
+    normalize_loss: False
+    learning_rate_fa: 0.0005
+    weight_decay_fa: .000001
+    n_epochs: 1000
+    b_size: 200
+    act_mu_p: Softplus
+    model: HybridVAE
+    gamma: 1.
+    alpha: .01
+    beta: .01
+    posterior_type: positive_gaussian
+    gp_1_hidden:
+      - 100
+      - 100
+      - 100
+    zp_priors:
+      L:
+        mu: 2.5
+        sigma: .8
+        min: 1.
+        max: 5.
+      C:
+        mu: 1.
+        sigma: .4
+        min: .5
+        max: 2.5
+    augmented: True
+    loss_params: True
+    path_model: "code/data/RLC/runs/HVAE.yaml/11_25_2022_10_23_37/HybridVAE_best_valid_model.pt"
+  simulator:
+    name: 'RLC'
+    init_param:
+      omega: 2.
+      V_a: 2.5
+      V_c: 1.
+      L: -10000000.
+      C: -10000000.
+    true_param:
+      omega: 2.
+      V_a: 2.5
+      V_c: 1.
+    partial_model_param:
+      - L
+      - C

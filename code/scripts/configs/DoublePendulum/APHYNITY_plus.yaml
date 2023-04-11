@@ -1,0 +1,52 @@
+name: 'Double Pendulum - APHYNITY'
+parameters:
+  data_path: "code/data/DoublePendulum"
+  optimization:
+    learning_rate_fa: 0.0005
+    weight_decay_fa: .0
+    n_epochs: 50
+    n_iter: 1
+    lambda_0: 5000.
+    tau_2: 5.
+    no_fa: False
+    za_dim: 10
+    fa_regularization_scheme:
+    augmented: True
+    nb_augmentation: 2
+    cos_sin_encoding: True
+    no_APHYNITY: False
+    use_complete_signal: True
+    obtain_init_position: True
+    nb_observed_theta_0: 10
+    nb_observed_theta_1: 5
+    nb_observed: 10
+    combined_augmentation: True
+    reduced_time_frame: True
+    loss_params: False
+    path_model: "code/data/DoublePendulum/runs/APHYNITY.yaml/12_14_2022_20_02_29/APHYNITYDoublePendulum_best_valid_model.pt"
+    model: 'APHYNITYDoublePendulum'
+    zp_priors:
+      theta_0:
+        min: -1.5691
+        max: 4.7124
+      theta_1:
+        min: -1.5691
+        max: 4.7124
+      dtheta_0:
+        min: -15.
+        max: 15.
+      dtheta_1:
+        min: -30.
+        max: 30.
+  simulator:
+    name: 'DoublePendulum'
+    init_param:
+      omega_0: .5
+    true_param:
+      omega_0: 1.
+      alpha: .5
+    partial_model_param:
+      - \theta_0
+      - \theta_1
+      - \dot \theta_0
+      - \dot \theta_1
