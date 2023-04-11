@@ -1,0 +1,58 @@
+name: 'Double Pendulum - HVAE'
+parameters:
+  data_path: "code/data/DoublePendulum"
+  optimization:
+    save_all_models: True
+    learning_rate_fa: 0.0005
+    weight_decay_fa: .00001
+    b_size: 500
+    n_epochs: 1
+    alpha: .0
+    beta: 0.
+    gamma: 0.
+    omicron: 0.
+    no_fa: True
+    za_dim: 10
+    reduced_time_frame: True
+    augmented: True
+    nb_augmentation: 1
+    cos_sin_encoding: True
+    use_complete_signal: True
+    obtain_init_position: True
+    nb_observed_theta_0: 10
+    nb_observed_theta_1: 5
+    nb_observed: 10
+    model: 'HybridVAEDoublePendulum'
+    path_model: "code/data/DoublePendulum/runs/HVAE.yaml/12_13_2022_20_28_08/HybridVAEDoublePendulum_best_valid_model.pt"
+    zp_prior_type: "Uniform"
+    zp_priors:
+      \theta_0:
+        sigma: -1.
+        mean: -1.
+        min: -1.5691
+        max: 4.7124
+      \theta_1:
+        sigma: -1.
+        mean: -1.
+        min: -1.5691
+        max: 4.7124
+      \dot \theta_0:
+        sigma: -1.
+        mean: -1.
+        min: -15.
+        max: 15.
+      \dot \theta_1:
+        sigma: -1.
+        mean: -1.
+        min: -30.
+        max: 30.
+  simulator:
+    name: 'DoublePendulum'
+    init_param_omega_0: .5
+    true_param_omega_0: 1.
+    true_param_alpha: .5
+    partial_model_param:
+      - \theta_0
+      - \theta_1
+      - \dot \theta_0
+      - \dot \theta_1

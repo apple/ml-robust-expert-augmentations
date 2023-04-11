@@ -1,0 +1,32 @@
+name: 'Reaction Diffusion - HVAE'
+parameters:
+  data_path: "code/data/ReactionDiffusion"
+  optimization:
+    learning_rate_fa: 0.0005
+    weight_decay_fa: .00001
+    n_epochs: 1000
+    b_size: 100
+    gamma: 1.
+    alpha: .01
+    beta: .01
+    omicron: 0.
+    model: HybridVAEReactionDiffusion
+    zp_priors:
+      a:
+        mu: 0.0015
+        sigma: 0.0004
+        min: 0.001
+        max: 0.004
+      b:
+        mu: 0.005
+        sigma: 0.0012
+        min: 0.001
+        max: 0.01
+  simulator:
+    name: 'ReactionDiffusion'
+    simulator_init_param:
+      a: -100000.
+      b: -100000.
+    simulator_partial_model_param:
+      - a
+      - b

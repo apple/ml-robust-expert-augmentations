@@ -1,0 +1,30 @@
+name: 'Pendulum - HVAE'
+parameters:
+  optimization:
+    normalize_loss: False
+    learning_rate_fa: 0.0005
+    weight_decay_fa: .000001
+    n_epochs: 1000
+    b_size: 200
+    model: HybridVAE
+    act_mu_p: Softplus
+    gamma: 1.
+    alpha: 0.01
+    beta: 0.01
+    omicron: 0.
+    zp_priors:
+      omega_0:
+        mu: 2.
+        sigma: .7
+        min: .392
+        max: 3.53
+  data_path: "code/data/DampedPendulum"
+  simulator:
+    name: 'DampedPendulum'
+    init_param:
+      omega_0: .5
+    true_param:
+      omega_0: 1.
+      alpha: .5
+    partial_model_param:
+      - omega_0

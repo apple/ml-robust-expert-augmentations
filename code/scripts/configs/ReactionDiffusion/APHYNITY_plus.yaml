@@ -1,0 +1,29 @@
+name: 'Reaction Diffusion - APHYNITY+'
+parameters:
+  data_path: "code/data/ReactionDiffusion"
+  optimization:
+    learning_rate_fa: 0.0005
+    weight_decay_fa: .0
+    n_epochs: 300
+    n_iter: 1
+    lambda_0: 10.
+    tau_2: 5.
+    fa_regularization_scheme:
+    augmented: True
+    path_model: "here"
+    zp_priors:
+      a:
+        min: .001
+        max: .004
+      b:
+        min: .001
+        max: .01
+  simulator:
+    name: 'ReactionDiffusion'
+    init_param:
+      a: -10000000.
+      b: -10000000.
+    partial_model_param:
+      - a
+      - b
+  solver: 'APHYNITYReactionDiffusion'

@@ -1,0 +1,38 @@
+name: 'RLC - APHYNITY'
+parameters:
+  data_path: "code/data/RLC"
+  optimization:
+    learning_rate_fa: 0.0005
+    weight_decay_fa: .0
+    n_epochs: 50
+    b_size: 100
+    n_iter: 5
+    lambda_0: 10.
+    tau_2: 5.
+    fa_linear: False
+    fa_n_layers: 3
+    fa_n_neurons: 150
+    fa_act: ReLU
+    fa_final_act:
+    fa_regularization_scheme:
+    augmented: False
+    zp_priors:
+      L:
+      C:
+    model: "APHYNITY"
+  simulator:
+    name: 'RLC'
+    init_param:
+      omega: 2.
+      V_a: 2.5
+      V_c: 1.
+      L: -10000000.
+      C: -10000000.
+    true_param:
+      omega: 2.
+      V_a: 2.5
+      V_c: 1.
+    partial_model_param:
+      - L
+      - C
+  solver: 'APHYNITY'
